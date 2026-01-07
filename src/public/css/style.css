@@ -1,0 +1,98 @@
+body {
+    height: 150vh;
+}
+
+.side-bar {
+    position: fixed;
+    top: 0;
+    width: 250px;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s;
+    z-index: 10;
+    background-color: var(--bs-secondary-bg);
+}
+
+.opened {
+    left: 0px;
+}
+
+.closed {
+    left: -250px;
+}
+
+.side-bar-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bi-search {
+    top: 50%;
+    right: 27%;
+    transform: translate(-50%, -55%);
+}
+.search-bar{
+    width: 75% !important
+}
+.search-btn{
+    height: max-content;
+    border-color: var(--bs-success);
+    background-color: var(--bs-success);
+    width: 20%;
+    margin: auto 0 auto auto;
+}
+tbody tr:nth-child(even) {
+    background-color: var(--bs-table-striped-bg);
+}
+
+a {
+    color: var(--bs-body-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--bs-link-hover-color);
+    background-color: var(--bs-secondary-bg);
+}
+
+.sidebar a.active {
+    background-color: var(--bs-primary);
+    color: var(--bs-body-color);
+}
+
+#form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#form div {
+    width: 45%
+}
+
+.active {
+    background-color: var(--bs-primary);
+    color: var(--bs-white);
+}
+
+.submit {
+    width: 90%;
+    height: 50%;
+}
+
+@media (max-width:500px) {
+    .details {
+        display: none;
+    }
+
+    #form {
+        display: block;
+    }
+
+    #form div {
+        width: 100%
+    }
+}

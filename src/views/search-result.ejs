@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('components/importCssFiles.ejs') %>
+        <title>Home</title>
+</head>
+
+<body class="bg-primary-subtle position-relative">
+    <div class="container">
+        <%- include('./components/navbar.ejs') %>
+            <%- include('./components/side-bar.ejs',{activeLink:"home"}) %>
+                <%- include('./components/search.ejs') %>
+                <h2>Search result on: <span class="link-success"><%= searchContent %></span></h2>
+                    <% if(customers.length!=0){ %>
+                        <table class="table table-striped table-hover text-center">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Name</td>
+                                    <td class="details">Country</td>
+                                    <td class="details">Gender</td>
+                                    <td class="details">Age</td>
+                                    <td>Last updated</td>
+                                    <td>Action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% customers.forEach((customer,index)=>{ %>
+                                    <tr>
+                                        <td>
+                                            <%= index+1 %>
+                                        </td>
+                                        <td>
+                                            <%= customer.firstName + " " +customer.lastName %>
+                                        </td>
+                                        <td class="details">
+                                            <%= customer.country %>
+                                        </td>
+                                        <td class="details">
+                                            <%= customer.gender %>
+                                        </td>
+                                        <td class="details">
+                                            <%= customer.age %>
+                                        </td>
+                                        <td>
+                                            <%= moment(customer.updatedAt).fromNow() %>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex justify-content-around">
+                                                <a href="/view/<%= customer.id %>" target="_blank"
+                                                    class="bi bi-eye-fill p-1 text-bg-primary rounded btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    data-bs-title="view"></a>
+                                                <a href="/edit/<%= customer.id %>" class="bi bi-pen-fill p-1 text-bg-primary rounded btn"
+                                                    data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    data-bs-title="Edit"></a>
+                                                <form action="/delete/<%= customer._id %>?_method=DELETE" method="post">
+                                                    <button class="bi bi-trash-fill p-1 text-bg-danger rounded btn"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top"
+                                                        data-bs-title="Delete"></button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <% }) %>
+                            </tbody>
+                        </table>
+                        <% }else{ %>
+                            <div class="d-flex justify-content-center vh-100">
+                                <h1 class="m-auto">NO Data Available</h1>
+                            </div>
+                            <% } %>
+    </div>
+    </div>
+</body>
+<script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="js/light-dark-mode.js"></script>
+<script src="js/side-bar.js"></script>
+<script src="js/tooltip.js"></script>
+
+</html>

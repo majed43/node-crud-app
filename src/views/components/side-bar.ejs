@@ -1,0 +1,12 @@
+<div id='side-bar' class='side-bar closed'>
+    <div class='side-bar-header '>
+        <h1>CRUDS <br>Side Bar</h1>
+        <i id='side-bar-close-btn' class='bi fs-1 bi-x-circle-fill bi-x-circle' type='button'></i>
+    </div>
+    <hr>
+    <div class='side-bar-body'>
+        <a href='/home' class='fs-3 rounded-1 p-2 ps-0 selected d-block <%= activeLink === 'home' ? 'active' : ' ' %>'><i class='bi bi-house'></i> Home</a>
+        <br>
+        <a href='/add-customers' class='fs-3 rounded-1 p-2 ps-0 <%= activeLink === 'add-customers' ? 'active' : ' ' %>'><i class='bi bi-person-add'></i> Add Customers</a>
+    </div>
+</div>

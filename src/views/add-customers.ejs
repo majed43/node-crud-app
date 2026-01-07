@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%- include('components/importCssFiles.ejs') %>
+        <title>Add Customers</title>
+</head>
+
+<body class="bg-primary-subtle position-relative">
+    <div class="container">
+        <%- include('./components/navbar.ejs') %>
+            <%- include('./components/side-bar.ejs',{activeLink:"add-customers"}) %>
+                <form id="form" action="/add-customers" method="post">
+                    <div class="mb-3">
+                        <label for="first-name" class="form-label">First name</label>
+                        <input type="text" class="form-control" id="first-name" name="firstName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="last-name" class="form-label">Last name</label>
+                        <input type="text" class="form-control" id="last-name" name="lastName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="age" class="form-label">Age</label>
+                        <input type="number" class="form-control" id="age" name="age">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tel-number" class="form-label">Tel number</label>
+                        <input type="tel" class="form-control" id="tel-number" name="telNumber">
+                    </div>
+                    <div class="mb-3">
+                        <label for="gender" class="form-label">gender</label>
+                        <select class="form-select" data-live-search="true" id="gender" name="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+
+                    </div>
+                    <div class="mb-3">
+                        <label for="country" class="form-label">Country</label>
+                        <input class="form-control" list="country-list" id="country" placeholder="Type to search..."
+                            name="country">
+                        <datalist id="country-list"></datalist>
+                    </div>
+                    <div class="mb-3 d-flex justify-content-center align-content-end">
+                        <button type="submit" class="btn btn-primary submit mt-auto">Submit</button>
+                    </div>
+                        <% if (typeof message !=="undefined" && message) { %>
+                            <% if (status=="wrong" ) {%>
+                                <div class="alert alert-danger">
+                                    <%= message %>
+                                </div>
+                                <% }else{ %>
+                                    <div class="alert alert-success">
+                                        <%= message %>
+                                    </div>
+                                    <% } %>
+                                        <% } %>
+
+
+                </form>
+    </div>
+</body>
+<script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="js/light-dark-mode.js"></script>
+<script src="js/side-bar.js"></script>
+<script src="js/tooltip.js"></script>
+<script src="axios/axios.min.js"></script>
+<script src="js/countries.js"></script>
+
+</html>
