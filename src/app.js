@@ -22,7 +22,6 @@ app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 const customerRouter=require("./routes/customer.routes.js");
 app.use(customerRouter);
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log("http://localhost:" + PORT);
-    console.log(__dirname);
 });
