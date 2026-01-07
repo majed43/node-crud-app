@@ -1,6 +1,9 @@
 const Customer = require("../model/customer.model");
 
 const moment = require("moment");
+function redirectHome(req, res) {
+    res.redirect("home")
+}
 function renderHome(req, res) {
     Customer.find()
         .then((result) => {
@@ -56,9 +59,9 @@ function remove(req, res) {
         res.redirect("/home")
     })
 };
-function edit (req, res)  {
+function edit(req, res) {
     Customer.findByIdAndUpdate(req.params.id, req.body).then(() => {
         res.redirect("/home")
     })
 }
-module.exports = { renderHome, renderAdd, viewDetails, renderEdit, add, search, remove,edit }
+module.exports = { redirectHome, renderHome, renderAdd, viewDetails, renderEdit, add, search, remove, edit }
